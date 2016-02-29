@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style>
+		.ti{
+			position: relative;
+			background-color: gray;
+			width:1024px;
+			height:600px;
+			margin: auto;
+		}
+		div >img{
+			margin-left:112px;
+			width:800px;
+			height:600px;
+		}
+		.tiol li {
+    		display: block;
+    		float: left;
+    		padding: 0px 5px;
+		}		
+		.tiol {
+			width: 200px;
+			margin: auto;
+   			padding: 0px;
+   			position: relative;
+    		bottom: 50px;
+    		margin-left:650px;
+		}
+		.active, .none{
+			background-image:url("http://g-ecx.images-amazon.com/images/G/01/AUIClients/AmazonGatewayAuiAssets-gw-2014_sprite-v3-5a01e311967501b5873d83f9ffc71bfcefd0fc98._V2_.png");
+			display: block;
+			width: 12px;
+			height: 30px;
+			background-position: -19px -46px;
+			background-repeat: no-repeat;
+		}
+    	.active:hover, .active:active, .none:hover, .none:active{
+    	    background-position: -32px -46px;
+    	}
+    	.none{
+    		background-position: -19px -46px;
+    	}
+    	.active{
+    		background-position: -32px -46px;
+    	}
+	</style>
+	<script>
+		var arr = new Array();
+		arr[0] = "images/1.jpg";
+		arr[1] = "images/2.jpg";
+		arr[2] = "images/3.jpg";
+		arr[3] = "images/4.jpg";
+		var curIndex = 0;
+		setInterval(change,3000);
+		function change(){
+			var imgTag = document.getElementById("icon");
+			if(curIndex == arr.length-1){
+				curIndex = 0;
+			}
+			else{
+				curIndex += 1;
+			}
+				imgTag.src = arr[curIndex];
+				changeactive(curIndex+1);
+		}
+		function changeactive(n){
+			for(var i=1;i<5;i++){
+				var link = document.getElementById("a"+i);
+				if(link.className == "active"){
+					link.className = "none";
+				}
+			}
+			document.getElementById("a"+n).className = "active";
+			curIndex = n-1;
+			document.getElementById("icon").src = arr[curIndex];
+		}
+	</script>
+</head>
+<body>
+<div id="bodyWrapper">
+<header>
+	<div id="menu">
+		<h2>Sample Code</h2>
+		<input id="search" style="float:right" type="text" placeholder="search a number"/>
+	</div>
+</header>
+<nav>
+	<ul>
+		<li class="sub"><a href="index.html">Home</a>
+			<ul>
+				<li class="sub"><a href="">Info</a>
+					<ul>
+						<li><a href="">One</a>
+					</ul>
+				<li><a href="">Technology</a>
+				<li><a href="">Happy</a>
+			</ul>
+		
+		</li>
+		<li><a href="angularSample.html">AngularJS</a></li>
+		<li class="sub"><a href="toggleimg.html">toggleImg</a>
+			<ul>
+				<li><a href="">Hi</a>
+				<li><a href="">Bey</a>
+				<li><a href="">Good</a>
+			</ul>
+		</li>
+		<li><a href="">About Us</a></li>
+	</ul>
+</nav>
+	<div>
+		<p>This function is built using prototype JavaScript</p>
+		<div class="ti">
+			<img src="images/1.jpg" id="icon"/>
+			<br/>
+		</div>
+		<div class="ti"style="height:0px;">
+			<ol class="tiol">
+				<li><a onclick="changeactive(1);" href="#" class="active" id="a1"></a></li>
+				<li><a onclick="changeactive(2);" href="#" class="none" id="a2"></a></li>
+				<li><a onclick="changeactive(3);" href="#" class="none" id="a3"></a></li>
+				<li><a onclick="changeactive(4);" href="#" class="none" id="a4"></a></li>
+			</ol>
+		</div>
+	</div>
+<div style="height:30px"></div>
+</div>
+</body>
+</html>

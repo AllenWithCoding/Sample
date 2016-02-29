@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-app='app'>
+<div id="bodyWrapper">
+<header>
+	<div id="menu">
+		<h2>Sample Code</h2>
+		<input id="search" style="float:right" type="text" placeholder="search a number"/>
+	</div>
+</header>
+<nav>
+	<ul>
+		<li class="sub"><a href="index.html">Home</a>
+			<ul>
+				<li class="sub"><a href="">Info</a>
+					<ul>
+						<li><a href="">One</a>
+					</ul>
+				<li><a href="">Technology</a>
+				<li><a href="">Happy</a>
+			</ul>
+		
+		</li>
+		<li><a href="angularSample.html">AngularJS</a></li>
+		<li class="sub"><a href="toggleimg.html">toggleImg</a>
+			<ul>
+				<li><a href="">Hi</a>
+				<li><a href="">Bey</a>
+				<li><a href="">Good</a>
+			</ul>
+		</li>
+		<li><a href="">About Us</a></li>
+	</ul>
+</nav>
+<div style="text-align:center">
+	<div style="height:50px;">The pictures are from the instagram web service</div>
+	<div ng-controller="UserController">
+		<div ng-init='init()'>
+			<form>
+				<select name="thumbsType" ng-model="selectedThumbsType">
+					<option ng-repeat="option in thumbsTypes" value="images.{{option}}.url">{{option}}</option>
+				</select>Selected: {{selectedThumbsType}}
+			</form>
+			<button ng-click="increase()">Increase Size</button>
+			<button ng-click="decrease()">Decrease Size</button>
+			<ng-thumbs prover='userData' expression='flexcollar' call-back="callback" filter-key="tags" key-name='selectedThumbsType'>
+			</ng-thumbs>
+	</div>
+	</div>
+</div>
+<div style="height:30px"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="js/app.js"></script>
+<script type="text/javascript" src="js/custom/filters.js"></script>
+<script type="text/javascript" src="js/controller/controller.js"></script>
+<script type="text/javascript" src="js/service/service.js"></script>
+<script type="text/javascript" src="js/custom/directive.js"></script>
+</div>
+</body>
+</html>
